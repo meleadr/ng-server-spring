@@ -80,4 +80,15 @@ public class ServerController {
     public void deleteServer(@PathVariable("id") final Long id) {
         serverService.delete(id);
     }
+
+    /**
+     * Ping - Ping a server
+     * @param ipAddress
+     * @return
+     * @throws Exception
+     */
+    @GetMapping("/server/ping/{ipAddress}")
+    public Server ping(@PathVariable("ipAddress") final String ipAddress) throws Exception {
+        return serverService.ping(ipAddress);
+    }
 }
