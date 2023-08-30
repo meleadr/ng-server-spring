@@ -14,15 +14,15 @@ public class ServerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ServerApplication.class, args);
 	}
-
-
-//	@Bean
-//	CommandLineRunner runner(ServerRepository serverRepo) {
-//		return args -> {
-//			serverRepo.save(new Server(null, "192.168.0.1", "Server 1", "16", "Dedicated", "https://www.freepnglogos.com/uploads/server-png/server-icon-download-icons-17.png", Status.SERVER_UP));
-//			serverRepo.save(new Server(null, "192.168.0.2", "Server 2", "8", "App Web", "https://www.freepnglogos.com/uploads/server-png/server-icon-download-icons-17.png", Status.SERVER_UP));
-//			serverRepo.save(new Server(null, "192.168.0.3", "Server 3", "4", "Website", "https://www.freepnglogos.com/uploads/server-png/server-icon-download-icons-17.png", Status.SERVER_UP));
-//			serverRepo.save(new Server(null, "192.168.0.4", "Server 4", "64", "Mutu", "https://www.freepnglogos.com/uploads/server-png/server-icon-download-icons-17.png", Status.SERVER_UP));
-//		};
-//	}
+	/*
+	@Bean
+	CommandLineRunner runner(ServerRepository serverRepo) {
+		return args -> {
+			serverRepo.save(new Server(null, "192.168.0.1", "Server 1", "16", "Dedicated", "https://www.freepnglogos.com/uploads/server-png/server-icon-download-icons-17.png", Status.SERVER_UP));
+			serverRepo.save(new Server(null, "192.168.0.2", "Server 2", "8", "App Web", "https://www.freepnglogos.com/uploads/server-png/server-icon-download-icons-17.png", Status.SERVER_UP));
+			serverRepo.save(new Server(null, "192.168.0.3", "Server 3", "4", "Website", "https://www.freepnglogos.com/uploads/server-png/server-icon-download-icons-17.png", Status.SERVER_UP));
+			serverRepo.save(new Server(null, "192.168.0.4", "Server 4", "64", "Mutu", "https://www.freepnglogos.com/uploads/server-png/server-icon-download-icons-17.png", Status.SERVER_UP));
+		};
+	}
+	*/
 }
