@@ -3,8 +3,17 @@ mat-list{
   margin: 0 auto;
 }
 
+mat-action-list{
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.actions{
+  gap: 2px;
+}
+
 .infos{
-  width: 50%;
   display: flex;
   justify-content: space-between;
   align-items: center;

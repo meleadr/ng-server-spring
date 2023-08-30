@@ -2,18 +2,20 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Server} from "../../models/server.model";
 import {ServersService} from "../../services/servers.service";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {DeleteDialogComponent} from "../../../core/components/delete-dialog/delete-dialog.component";
 
 @Component({
   selector: 'app-server-list',
   templateUrl: './server-list.component.html',
   styleUrls: ['./server-list.component.scss']
 })
-export class ServerListComponent implements OnInit{
+export class ServerListComponent implements OnInit {
 
   loading$!: Observable<boolean>;
   servers$!: Observable<Server[]>;
 
-  constructor(private serversService: ServersService) {
+  constructor(private serversService: ServersService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -22,4 +24,16 @@ export class ServerListComponent implements OnInit{
     this.serversService.getServersFromServer();
   }
 
+  openDialog(id: number) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      id: id,
+    };
+
+    this.dialog.open(DeleteDialogComponent, dialogConfig);
+  }
 }
