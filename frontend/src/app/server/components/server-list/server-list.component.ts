@@ -38,4 +38,8 @@ export class ServerListComponent implements OnInit {
 
     this.dialog.open(DeleteDialogComponent, dialogConfig);
   }
+
+  onPing(ipAddress: string) {
+   this.serversService.pingServer(ipAddress);
+  }
 }

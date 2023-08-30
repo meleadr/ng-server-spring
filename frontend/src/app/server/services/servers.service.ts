@@ -76,4 +76,16 @@ export class ServersService {
         })
     ).subscribe();
   }
+
+    pingServer(ipAddress: string) {
+        this.http.get(`http://localhost:9000/server/ping/${ipAddress}`).pipe(
+            delay(1000),
+            switchMap(()=> this.servers$),
+            take(1),
+            map(servers => servers.filter(server => server.ipAddress !== ipAddress)),
+            tap(servers => {
+                this._servers$.next(servers)
+            })
+        ).subscribe();
+    }
 }
