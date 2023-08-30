@@ -51,10 +51,14 @@ export class ServersService {
   addServer(server: Server) {
     this.setLoadingStatus(true);
     this.http.post('http://localhost:9000/server', server).pipe(
-      delay(1000),
-      tap(() => {
-        this.getServersFromServer();
-      })
+        delay(1000),
+        switchMap(()=> this.servers$),
+        take(1),
+        map(servers => [...servers, server]),
+        tap(servers => {
+            this._servers$.next(servers)
+            this.setLoadingStatus(false);
+            })
     ).subscribe();
   }
 
