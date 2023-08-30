@@ -1,3 +1,5 @@
+import {Status} from "../enums/status.enum";
+
 export class Server {
   id!: number;
   ipAddress!: string;
@@ -5,5 +7,5 @@ export class Server {
   memory!: string;
   type!: string;
   imageUrl!: string;
-  status!: string;
+  status!: Status;
 }
