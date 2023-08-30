@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Server} from "../../models/server.model";
+import {ServersService} from "../../services/servers.service";
 
 @Component({
   selector: 'app-server-list',
@@ -10,21 +10,16 @@ import {Server} from "../../models/server.model";
 })
 export class ServerListComponent implements OnInit{
 
-  server$!: Observable<Server[]>;
+  loading$!: Observable<boolean>;
+  servers$!: Observable<Server[]>;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private serversService: ServersService) {
   }
 
   ngOnInit() {
-    this.loadServer();
-  }
-
-  loadServer() {
-    this.httpClient.get('http://localhost:9000/server').subscribe(
-      (response: any) => {
-        console.log(response);
-      }
-    );
+    this.loading$ = this.serversService.loading$;
+    this.servers$ = this.serversService.servers$;
+    this.serversService.getServersFromServer();
   }
 
 }

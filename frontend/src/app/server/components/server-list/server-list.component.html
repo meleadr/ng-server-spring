@@ -1,1 +1,16 @@
-<p>server-list works!</p>
+<mat-list *ngIf="servers$ | async as servers">
+  <mat-list-item *ngFor="let server of servers">
+    <mat-icon matListItemIcon>computer</mat-icon>
+    <div matListItemTitle>{{server.name}}</div>
+    <div matListItemLine class="infos">
+      <span>{{server.ipAddress}}</span>
+      <span>{{server.type}}</span>
+      <span>{{server.memory}}</span>
+      <button mat-flat-button color="primary">Ping <mat-icon>network_wifi</mat-icon></button>
+      <button mat-flat-button color="warn">Supprimer <mat-icon>delete</mat-icon></button>
+    </div>
+  </mat-list-item>
+</mat-list>
+<div *ngIf="loading$ | async" class="loading">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
