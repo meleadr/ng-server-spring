@@ -3,11 +3,17 @@ import { CommonModule } from '@angular/common';
 import {SharedModule} from "../shared/shared.module";
 import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
+import { HeaderComponent } from './components/header/header.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HeaderComponent
+  ],
+  exports: [
+    HeaderComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,
