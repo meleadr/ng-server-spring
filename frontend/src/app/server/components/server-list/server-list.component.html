@@ -9,7 +9,14 @@
       <span>{{server.ipAddress}}</span>
       <span>{{server.type}}</span>
       <span>{{server.memory}}</span>
+      <span>
+        <mat-icon [color]="server.status === Status.SERVER_DOWN ? 'warn' : 'primary'">
+          {{ server.status === Status.SERVER_DOWN ? 'signal_cellular_off' : 'signal_cellular_4_bar' }}
+        </mat-icon>
+      </span>
       <span class="actions">
+        <!-- <mat-icon *ngIf="pinging" color="warn">warning</mat-icon> -->
+        <a mat-flat-button color="accent" routerLink="/server/{{server.id}}">Modifier <mat-icon>edit</mat-icon></a>
         <button mat-flat-button color="primary">Ping <mat-icon>network_wifi</mat-icon></button>
         <button mat-flat-button color="warn" (click)="openDialog(server.id)">Supprimer <mat-icon>delete</mat-icon></button>
       </span>

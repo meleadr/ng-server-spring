@@ -4,6 +4,7 @@ import {Server} from "../../models/server.model";
 import {ServersService} from "../../services/servers.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {DeleteDialogComponent} from "../../../core/components/delete-dialog/delete-dialog.component";
+import {Status} from "../../enums/status.enum";
 
 @Component({
   selector: 'app-server-list',
@@ -14,6 +15,7 @@ export class ServerListComponent implements OnInit {
 
   loading$!: Observable<boolean>;
   servers$!: Observable<Server[]>;
+  protected readonly Status = Status;
 
   constructor(private serversService: ServersService, private dialog: MatDialog) {
   }
