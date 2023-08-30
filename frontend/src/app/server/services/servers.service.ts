@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, delay, map, Observable, tap} from "rxjs";
+import {BehaviorSubject, delay, map, Observable, switchMap, take, tap} from "rxjs";
 import {Server} from "../models/server.model";
 
 @Injectable()
@@ -46,5 +46,29 @@ export class ServersService {
     return this.servers$.pipe(
       map(servers => servers.filter(server => server.id === id)[0])
     )
+  }
+
+  addServer(server: Server) {
+    this.setLoadingStatus(true);
+    this.http.post('http://localhost:9000/server', server).pipe(
+      delay(1000),
+      tap(() => {
+        this.getServersFromServer();
+      })
+    ).subscribe();
+  }
+
+  deleteServer(id: number): void {
+    this.setLoadingStatus(true);
+    this.http.delete(`http://localhost:9000/server/${id}`).pipe(
+        delay(1000),
+        switchMap(()=> this.servers$),
+        take(1),
+        map(servers => servers.filter(server => server.id !== id)),
+        tap(servers => {
+          this._servers$.next(servers)
+          this.setLoadingStatus(false);
+        })
+    ).subscribe();
   }
 }
