@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MaterialModule} from "./material.module";
+import {MemoryPipe} from "./pipes/memory.pipe";
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+      MemoryPipe
+  ],
   imports: [
     CommonModule,
     MaterialModule
   ],
   exports: [
-    MaterialModule
+    MaterialModule,
+    MemoryPipe
   ]
 })
 export class SharedModule { }

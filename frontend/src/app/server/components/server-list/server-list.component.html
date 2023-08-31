@@ -8,7 +8,7 @@
     <div matListItemLine class="infos">
       <span>{{server.ipAddress}}</span>
       <span>{{server.type}}</span>
-      <span>{{server.memory}}</span>
+      <span>{{server.memory | memory}}</span>
       <span>
         <mat-icon [color]="server.status === Status.SERVER_DOWN ? 'warn' : 'primary'">
           {{ server.status === Status.SERVER_DOWN ? 'signal_cellular_off' : 'signal_cellular_4_bar' }}
