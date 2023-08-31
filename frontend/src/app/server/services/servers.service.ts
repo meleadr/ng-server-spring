@@ -88,4 +88,21 @@ export class ServersService {
             })
         ).subscribe();
     }
+
+    updateServer(server: Server) {
+        this.setLoadingStatus(true);
+        this.http.put<Server>(`http://localhost:9000/server/${server.id}`, server).pipe(
+            switchMap((updatedServer) => {
+                const updatedServers = [...(this._servers$.value || [])];
+                const index = updatedServers.findIndex(s => s.id === updatedServer.id);
+                updatedServers[index] = updatedServer;
+
+                return this.servers$.pipe(
+                    take(1),
+                    tap(() => this._servers$.next(updatedServers)),
+                    finalize(() => this.setLoadingStatus(false))
+                );
+            })
+        ).subscribe();
+    }
 }

@@ -1,6 +1,6 @@
 <div class="form-container">
-  <h1 *ngIf="!server" class="form-title">Ajouter un serveur</h1>
-  <h1 *ngIf="server" class="form-title">Modifier un serveur</h1>
+  <h1 *ngIf="!server$" class="form-title">Ajouter un serveur</h1>
+  <h1 *ngIf="server$" class="form-title">Modifier un serveur</h1>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
     <div class="form-row">
