@@ -4,9 +4,9 @@ import {ServerListComponent} from "./components/server-list/server-list.componen
 import {ServerFormComponent} from "./components/server-form/server-form.component";
 
 const routes: Routes = [
-  { path: '', component: ServerListComponent },
-  { path: 'add', component: ServerFormComponent},
-  { path: ':id', component: ServerFormComponent}
+  { path: '', component: ServerListComponent, data: { subTitle: 'Liste des serveurs' }},
+  { path: 'add', component: ServerFormComponent, data: { subTitle: 'Ajout d\'un serveur' }},
+  { path: ':id', component: ServerFormComponent, data: { subTitle: 'Modification d\'un serveur' }},
 ];
 
 @NgModule({
