@@ -5,7 +5,8 @@ import {ServerFormComponent} from "./components/server-form/server-form.componen
 
 const routes: Routes = [
   { path: '', component: ServerListComponent },
-  { path: 'add', component: ServerFormComponent}
+  { path: 'add', component: ServerFormComponent},
+  { path: ':id', component: ServerFormComponent}
 ];
 
 @NgModule({
