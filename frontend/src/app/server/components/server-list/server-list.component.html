@@ -1,28 +1,67 @@
 <mat-action-list>
-  <button mat-flat-button color="primary" routerLink="/server/add"><mat-icon>add_box</mat-icon>Ajouter un serveur</button>
+  <button mat-flat-button color="primary" routerLink="/server/add">
+    <mat-icon>add_box</mat-icon>Ajouter un serveur
+  </button>
 </mat-action-list>
-<mat-list *ngIf="servers$ | async as servers;">
-  <mat-list-item *ngFor="let server of servers">
-    <mat-icon matListItemIcon>computer</mat-icon>
-    <div matListItemTitle>{{server.name | titlecase}}</div>
-    <div matListItemLine class="infos">
-      <span>{{server.ipAddress}}</span>
-      <span>{{server.type}}</span>
-      <span>{{server.memory | memory}}</span>
-      <span>
+
+<div class="table-container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nom</th>
+      <td mat-cell *matCellDef="let server">{{ server.name | titlecase }}</td>
+    </ng-container>
+
+    <!-- IP Address Column -->
+    <ng-container matColumnDef="ipAddress">
+      <th mat-header-cell *matHeaderCellDef>IP Address</th>
+      <td mat-cell *matCellDef="let server">{{ server.ipAddress }}</td>
+    </ng-container>
+
+    <!-- Type Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let server">{{ server.type }}</td>
+    </ng-container>
+
+    <!-- Memory Column -->
+    <ng-container matColumnDef="memory">
+      <th mat-header-cell *matHeaderCellDef>Memory</th>
+      <td mat-cell *matCellDef="let server">{{ server.memory | memory }}</td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let server">
         <mat-icon [color]="server.status === Status.SERVER_DOWN ? 'warn' : 'primary'">
           {{ server.status === Status.SERVER_DOWN ? 'signal_cellular_off' : 'signal_cellular_4_bar' }}
         </mat-icon>
-      </span>
-      <span class="actions">
-        <!-- <mat-icon *ngIf="pinging" color="warn">warning</mat-icon> -->
-        <button mat-flat-button color="primary"(click)="onPing(server.ipAddress)">Ping <mat-icon>network_wifi</mat-icon></button>
-        <a mat-flat-button color="accent" routerLink="/server/{{server.id}}">Modifier <mat-icon>edit</mat-icon></a>
-        <button mat-flat-button color="warn" (click)="openDialog(server.id)">Supprimer <mat-icon>delete</mat-icon></button>
-      </span>
-    </div>
-  </mat-list-item>
-</mat-list>
+      </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let server" class="actions">
+        <button mat-flat-button color="primary" (click)="onPing(server.ipAddress)">
+          Ping <mat-icon>network_wifi</mat-icon>
+        </button>
+        <a mat-flat-button color="accent" [routerLink]="['/server', server.id]">
+          Modifier <mat-icon>edit</mat-icon>
+        </a>
+        <button mat-flat-button color="warn" (click)="openDialog(server.id)">
+          Supprimer <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
 <div *ngIf="loading$ | async" class="loading">
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </div>

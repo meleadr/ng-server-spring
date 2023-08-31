@@ -1,27 +1,16 @@
-mat-list{
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
 mat-action-list{
   display: flex;
   justify-content: flex-end;
   padding: 20px;
 }
 
-.actions{
-  gap: 2px;
+table{
+  min-width: 90%;
+  margin: 0 auto;
 }
 
-.infos{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.actions{
-  display: flex;
-  justify-content: flex-end;
+.actions > *{
+  margin-left: 5px;
 }
 
 .loading{

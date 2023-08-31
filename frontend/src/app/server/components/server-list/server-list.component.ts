@@ -5,6 +5,7 @@ import {ServersService} from "../../services/servers.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {DeleteDialogComponent} from "../../../core/components/delete-dialog/delete-dialog.component";
 import {Status} from "../../enums/status.enum";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-server-list',
@@ -16,6 +17,8 @@ export class ServerListComponent implements OnInit {
   loading$!: Observable<boolean>;
   servers$!: Observable<Server[]>;
   protected readonly Status = Status;
+  dataSource = new MatTableDataSource<Server>();
+  displayedColumns: string[] = ['name', 'ipAddress', 'type', 'memory', 'status', 'actions'];
 
   constructor(private serversService: ServersService, private dialog: MatDialog) {
   }
@@ -24,6 +27,7 @@ export class ServerListComponent implements OnInit {
     this.loading$ = this.serversService.loading$;
     this.servers$ = this.serversService.servers$;
     this.serversService.getServersFromServer();
+    this.servers$.subscribe(servers => this.dataSource.data = servers);
   }
 
   openDialog(id: number) {
