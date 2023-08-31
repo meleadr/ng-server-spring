@@ -4,7 +4,7 @@
 <mat-list *ngIf="servers$ | async as servers;">
   <mat-list-item *ngFor="let server of servers">
     <mat-icon matListItemIcon>computer</mat-icon>
-    <div matListItemTitle>{{server.name}}</div>
+    <div matListItemTitle>{{server.name | titlecase}}</div>
     <div matListItemLine class="infos">
       <span>{{server.ipAddress}}</span>
       <span>{{server.type}}</span>
