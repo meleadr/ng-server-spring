@@ -6,17 +6,17 @@
     <div class="form-row">
       <mat-form-field class="form-field">
         <mat-label>Adresse IP</mat-label>
-        <input matInput type="text" id="ipAddress" formControlName="ipAddress">
+        <input matInput type="text" formControlName="ipAddress">
       </mat-form-field>
       <mat-form-field class="form-field">
         <mat-label>Nom</mat-label>
-        <input matInput type="text" id="name" formControlName="name">
+        <input matInput type="text" formControlName="name">
       </mat-form-field>
     </div>
     <div class="form-row">
       <mat-form-field class="form-field">
         <mat-label>Type</mat-label>
-        <input matInput type="text" id="type" formControlName="type">
+        <input matInput type="text" formControlName="type">
       </mat-form-field>
       <mat-form-field class="form-field">
         <mat-label>Mémoire</mat-label>
@@ -33,7 +33,7 @@
     <div class="form-row">
       <mat-form-field class="form-field">
         <mat-label>Image URL</mat-label>
-        <input matInput type="text" id="imageUrl" formControlName="imageUrl">
+        <input matInput type="text" formControlName="imageUrl">
       </mat-form-field>
     </div>
     <mat-form-field class="form-field">
@@ -43,6 +43,9 @@
         <mat-option value="SERVER_UP">Allumé</mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" class="submit-button">Submit</button>
+    <div class="action-buttons">
+      <button mat-raised-button color="warn" routerLink="/">Annuler</button>
+      <button mat-raised-button color="primary" type="submit">Envoyer</button>
+    </div>
   </form>
 </div>
