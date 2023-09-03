@@ -1,7 +1,24 @@
 <mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
   <span>ServerManagement</span>
-  <ul>
-    <li><a routerLink="/server">Server</a></li>
-  </ul>
+  <span class="example-spacer"></span>
+  <button mat-icon-button routerLink="/login">
+    <mat-icon> {{ authService.isLoggedIn ? 'account_circle' : 'exit_to_app'}}</mat-icon>
+  </button>
 </mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/server"> Serveurs </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
 <div class="sub-title"><h2>{{ subTitle }}</h2></div>

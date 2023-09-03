@@ -1,11 +1,11 @@
-ul{
-  list-style: none;
-  display: inline-block;
+mat-sidenav-content{
+  div{
+    height: 95vh;
+  }
 }
 
-li{
-  display: inline-block;
-  margin: 0 10px;
+mat-nav-list{
+  width: 20vw;
 }
 
 a{
@@ -18,4 +18,8 @@ a{
   font-size: 1.5rem;
   font-weight: 300;
   margin-bottom: 20px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
 }
