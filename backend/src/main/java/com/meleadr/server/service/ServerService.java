@@ -36,7 +36,7 @@ public class ServerService {
         return serverRepository.findByIpAddress(ipAddress);
     }
     public Server ping(String ipAddress) throws IOException{
-        Server server = serverRepository.findByIpAddress(ipAddress);
+        Server server = getByIp(ipAddress);
         InetAddress inetAddress = InetAddress.getByName(ipAddress);
         server.setStatus(inetAddress.isReachable(1000) ? Status.SERVER_UP : Status.SERVER_DOWN);
         serverRepository.save(server);
