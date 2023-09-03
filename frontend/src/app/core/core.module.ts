@@ -6,13 +6,15 @@ import {HttpClientModule} from "@angular/common/http";
 import { HeaderComponent } from './components/header/header.component';
 import {AuthService} from "./services/auth.service";
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {DeleteDialogComponent} from "./components/delete-dialog/delete-dialog.component";
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    PageNotFoundComponent
+    DeleteDialogComponent,
+    PageNotFoundComponent,
   ],
   exports: [
     HeaderComponent
@@ -24,7 +26,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     HttpClientModule,
   ],
   providers: [
-      AuthService
+      AuthService,
   ]
 })
 export class CoreModule { }

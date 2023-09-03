@@ -7,7 +7,6 @@ const routes: Routes = [
   { path: '', component: ServerListComponent, data: { subTitle: 'Liste des serveurs' }},
   { path: 'add', component: ServerFormComponent, data: { subTitle: 'Ajout d\'un serveur' }},
   { path: ':id', component: ServerFormComponent, data: { subTitle: 'Modification d\'un serveur' }},
-  { path: '**', redirectTo: '/auth/login' }
 ];
 
 @NgModule({

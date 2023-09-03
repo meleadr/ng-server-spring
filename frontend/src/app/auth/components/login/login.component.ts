@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 import {AuthService} from "../../../core/services/auth.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 
@@ -36,8 +36,15 @@ export class LoginComponent implements OnInit{
         // Usually you would use the redirect URL from the auth service.
         const redirectUrl = '/server';
 
+        // Set our navigation extras object
+        // that passes on our global query params and fragment
+        const navigationExtras: NavigationExtras = {
+          queryParamsHandling: 'preserve',
+          preserveFragment: true
+        };
+
         // Redirect the user
-        this.router.navigate([redirectUrl]);
+        this.router.navigate([redirectUrl], navigationExtras);
       }
     });
   }

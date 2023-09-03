@@ -13,8 +13,7 @@ import { DeleteDialogComponent } from '../core/components/delete-dialog/delete-d
 @NgModule({
   declarations: [
     ServerListComponent,
-    ServerFormComponent,
-    DeleteDialogComponent
+    ServerFormComponent
   ],
   imports: [
     CommonModule,
