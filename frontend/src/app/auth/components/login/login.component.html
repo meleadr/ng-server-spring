@@ -1,1 +1,16 @@
-<p>login works!</p>
+<mat-card class="login-card">
+  <h2>Login</h2>
+  <p>{{ message }}</p>
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <mat-form-field>
+      <input matInput placeholder="Username">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password">
+    </mat-form-field>
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit" *ngIf="!authService.isLoggedIn">Login</button>
+      <button mat-raised-button color="warn" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+    </div>
+  </form>
+</mat-card>

@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
 
+import { Observable, of } from 'rxjs';
+import { tap, delay } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private token!: string;
+  isLoggedIn = false;
 
-  getToken(): string {
-    return this.token;
+  // store the URL so we can redirect after logging in
+  redirectUrl: string | null = null;
+
+  login(): Observable<boolean> {
+    return of(true).pipe(
+      delay(1000),
+      tap(() => this.isLoggedIn = true)
+    );
   }
 
-  login(): void {
-    this.token = 'MyFakeToken';
+  logout(): void {
+    this.isLoggedIn = false;
   }
-
-  isLoggedIn(): boolean {
-    return true;
-  }
-
 }
