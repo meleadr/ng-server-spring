@@ -5,12 +5,14 @@ import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import { HeaderComponent } from './components/header/header.component';
 import {AuthService} from "./services/auth.service";
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    PageNotFoundComponent
   ],
   exports: [
     HeaderComponent

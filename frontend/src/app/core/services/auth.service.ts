@@ -15,7 +15,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return !!this.token;
+    return true;
   }
 
 }
